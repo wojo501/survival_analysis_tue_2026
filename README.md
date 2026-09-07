@@ -2,6 +2,8 @@
 
 Welcome to the repository for **2AMS11 Survival Analysis** at Eindhoven University of Technology (TU/e).
 
+[![Canvas Course Page](https://img.shields.io/badge/Canvas-Course%20Page-%23E05A47?style=for-the-badge&logo=instructure&logoColor=white)](https://canvas.tue.nl/courses/34519)
+
 ---
 
 ## 📌 Important Announcements & Deadlines
