@@ -42,8 +42,7 @@ for target in [0.0, 0.1, 0.5]:
 
         if estimates.size > 0:
             bias = estimates.mean() - rate
-            # ddof=0 makes empirical MSE = variance + bias**2 exactly.
-            variance = estimates.var(ddof=0)
+            variance = estimates.var(ddof=1)
             mse = np.mean((estimates - rate) ** 2)
         else:
             bias = variance = mse = np.nan
