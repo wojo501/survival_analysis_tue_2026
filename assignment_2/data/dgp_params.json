@@ -1,0 +1,26 @@
+{
+  "gamma": 0.8,
+  "p0_tau": 0.25,
+  "tau": 90.0,
+  "age_mean": 72.0,
+  "age_sd": 10.0,
+  "age_lo": 40.0,
+  "age_hi": 95.0,
+  "com_intercept": 0.9,
+  "com_age_slope": 0.035,
+  "com_center": 2.5,
+  "p_treat": 0.5,
+  "beta_age": 0.25,
+  "beta_com": 0.2,
+  "beta_rm": -0.35,
+  "dropout_by_tau": 0.1,
+  "lambda_derived": 0.007861742067821764,
+  "dropout_rate_derived": 0.0011706723961980698,
+  "covariates": [
+    "age_c10",
+    "comorbidity_c",
+    "remote_monitoring"
+  ],
+  "seed": 2026,
+  "n": 1000
+}
