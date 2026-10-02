@@ -1,29 +1,44 @@
 {
-  "gamma": 1.6,
-  "p0_tau": 0.25,
+  "gamma": 0.7,
+  "lambda": 0.001,
+  "beta_age": 0.05,
+  "beta_size": 0.1,
+  "beta_chemo": -0.7,
+  "age_gamma_shape": 20,
+  "age_gamma_scale": 3.25,
+  "age_min": 18,
+  "size_log_mean": 2.8,
+  "size_log_sd": 0.5,
+  "chemo_logit_intercept": -3.75,
+  "chemo_logit_size_slope": 0.25,
+  "dropout_by_tau": 0.2,
+  "dropout_rate": 0.044628710262841945,
   "tau": 5.0,
-  "age_mean": 60.0,
-  "age_sd": 12.0,
-  "age_lo": 30.0,
-  "age_hi": 85.0,
-  "size_mean": 30.0,
-  "size_sd": 8.0,
-  "size_lo": 5.0,
-  "size_hi": 60.0,
-  "chemo_intercept": -2.0,
-  "chemo_size_slope": 0.06,
-  "beta_age": -0.15,
-  "beta_size": 0.03,
-  "beta_chemo": -0.5,
-  "dropout_by_tau": 0.15,
-  "lambda_derived": 0.021905884412831176,
-  "dropout_rate_derived": 0.032503785899554986,
+  "time_unit": "years",
+  "n": 800,
+  "seed": 2026,
   "covariates": [
     "age_c10",
-    "size_c",
+    "size_c10",
     "chemo"
   ],
-  "seed": 2026,
-  "n": 800,
-  "time_unit": "years"
+  "age_center": 65,
+  "size_center": 20,
+  "covariate_unit": 10,
+  "lambda_centered": 0.19056626845863,
+  "beta_scaled": [
+    0.5,
+    1.0,
+    -0.7
+  ],
+  "evaluation_times": [
+    1,
+    3,
+    5
+  ],
+  "prediction_profile": {
+    "age": 65,
+    "tumor_size": 20,
+    "chemo": 0
+  }
 }
