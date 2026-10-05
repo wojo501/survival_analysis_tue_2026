@@ -19,3 +19,18 @@ To complete the assignments, you **must** join a group on Canvas:
 
 ---
 *This repository will house code, notebooks, and deliverables for the course.*
+
+
+## Assignment 2: running the notebook
+
+Use Python 3.11 or newer and [uv](https://docs.astral.sh/uv/):
+
+```sh
+cd assignment_2
+uv sync --locked
+uv run --locked jupyter lab 1_data_generation.ipynb
+```
+
+In VS Code, select `assignment_2/.venv/bin/python` as the notebook kernel.
+The final cell runs 2,000 repetitions per dropout scenario and writes results
+to `data/`. For a quick pilot, reduce `REPETITIONS` before running all cells.
