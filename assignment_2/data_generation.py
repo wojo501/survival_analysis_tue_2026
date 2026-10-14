@@ -10,7 +10,7 @@
 # Compare the full Weibull PH model with a model that omits tumour size.
 #
 # Run from this folder with `uv sync --locked` and
-# `uv run --locked python 1_data_generation.py`.
+# `uv run --locked python data_generation.py`.
 
 import json
 from pathlib import Path
@@ -119,7 +119,7 @@ print(f"n={len(data)}, events={data['event'].sum()}, censored={1 - data['event']
 # 1, 3 and 5 years for a woman aged 65, with a 20 mm tumour and no chemotherapy.
 
 MODELS = {"full": COVARIATES, "no_size": ["age_c10", "chemo"]}
-TRUTH = {"beta_chemo": -0.7}
+TRUTH = {"beta_age": 0.05, "beta_size": 0.1, "beta_chemo": -0.7}
 TRUTH.update({f"risk_{t}y": -np.expm1(-RATE * t ** SHAPE) for t in TIMES})
 
 
@@ -131,12 +131,15 @@ def run_simulation(repetitions=REPETITIONS, n=N, seed=SEED):
             data = generate_dataset(n, dropout, rng)
             for model, covariates in MODELS.items():
                 fit = fit_weibull_ph(data, covariates)
+                coefficients = dict(zip(fit["covariates"], fit["beta"])) if fit else {}
                 rows.append({
                     "dropout_target": dropout, "model": model, "run": run,
                     "censoring": 1 - data["event"].mean(),
                     "dropout_observed": data["dropout_observed"].mean(),
                     "converged": fit is not None,
-                    "beta_chemo": fit["beta"][-1] if fit else np.nan,
+                    "beta_age": coefficients.get("age_c10", np.nan) / 10,
+                    "beta_size": coefficients.get("size_c10", np.nan) / 10,
+                    "beta_chemo": coefficients.get("chemo", np.nan),
                     **{f"risk_{t}y": -np.expm1(-fit["rate"] * t ** fit["shape"])
                        if fit else np.nan for t in TIMES},
                 })
@@ -147,6 +150,8 @@ def summarize(results):
     rows = []
     for (dropout, model), group in results.groupby(["dropout_target", "model"], sort=False):
         for parameter, truth in TRUTH.items():
+            if model == "no_size" and parameter == "beta_size":
+                continue
             values = group[parameter].dropna()
             rows.append({
                 "dropout_target": dropout, "model": model, "parameter": parameter,
