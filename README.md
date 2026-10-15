@@ -19,3 +19,19 @@ To complete the assignments, you **must** join a group on Canvas:
 
 ---
 *This repository will house code, notebooks, and deliverables for the course.*
+
+
+## Assignments 2 and 3: simulation and results
+
+Use Python 3.11 or newer and [uv](https://docs.astral.sh/uv/):
+
+```sh
+cd assignment_2
+uv sync --locked --no-dev
+uv run --locked --no-dev python data_generation.py
+uv run --locked --no-dev python part3_results.py
+```
+
+The simulation runs 2,000 repetitions per dropout scenario and writes results
+to `data/`. The second script creates `tables/coefficients.tex` and
+`figures/recurrence_risk.pdf` (also saved as PNG) for Part III.

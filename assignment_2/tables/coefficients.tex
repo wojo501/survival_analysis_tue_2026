@@ -1,0 +1,21 @@
+\begin{table}[htbp]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{llrrrrrr}
+\toprule
+$q$ & Model & $\bar\beta_{\mathrm{age}}$ & $\bar\beta_{\mathrm{size}}$ & $\bar\beta_{\mathrm{chemo}}$ & Bias & Variance & MSE \\
+\midrule
+0\% & Full & 0.0503 & 0.1008 & -0.7051 & -0.0051 & 0.0251 & 0.0251 \\
+0\% & No size & 0.0418 & --- & 0.3791 & 1.0791 & 0.0165 & 1.1809 \\
+20\% & Full & 0.0503 & 0.1011 & -0.7107 & -0.0107 & 0.0257 & 0.0258 \\
+20\% & No size & 0.0418 & --- & 0.3881 & 1.0881 & 0.0170 & 1.2011 \\
+50\% & Full & 0.0503 & 0.1013 & -0.7122 & -0.0122 & 0.0308 & 0.0309 \\
+50\% & No size & 0.0419 & --- & 0.4102 & 1.1102 & 0.0201 & 1.2528 \\
+\bottomrule
+\end{tabular}
+\caption{Mean log hazard ratios over successful fits; age is per year and
+tumor size per mm. Bias, variance and MSE refer to chemotherapy
+($\beta=-0.7$). Here $q=P(C<5)$; the dash denotes an omitted covariate.}
+\label{tab:part3_coefficients}
+\end{table}
